@@ -14,14 +14,16 @@ foreach ($repo in $target_repos) {
         $commits = gh api --paginate $endpoint | ConvertFrom-Json
         
         foreach ($commit in $commits) {
-
-			if ($commit.author.login.StartsWith("github")){continue}
+			
+			Write-Host $commit.commit.author
+			Write-Host ""
+			# if ($commit.author.login.StartsWith("github")){continue}
             # Loop through each commit and extract the required data, which could be exported to CSV for filtering
-            Write-Host "`t`t" $repo
-			Write-Host "`t`t" $commit.sha
-            Write-Host "`t`t" $commit.author.login
-            Write-Host "`t`t" $commit.commit.author.date
-            Write-Host ""
+            # Write-Host "`t`t" $repo
+			# Write-Host "`t`t" $commit.sha
+            # Write-Host "`t`t" $commit.author.login
+            # Write-Host "`t`t" $commit.commit.author.date
+            # Write-Host ""
         }
     }
 }
